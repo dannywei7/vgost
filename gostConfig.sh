@@ -182,7 +182,24 @@ mv gost-linux-amd64-2.10.1 gost
 chmod +x gost
 
 #####
-bash <(curl -sL https://raw.githubusercontent.com/dannywei7/vgost/master/gostConfig1.sh)
+
+cat > /root/sup.sh  <<-EOF
+#!/bin/bash
+mkdir ./log
+
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:20?compression=true >/dev/null 2>./log/gost20.log& 
+
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:1433?compression=true >/dev/null 2>./log/gost1433.log&
+
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3306?compression=true >/dev/null 2>./log/gost3306.log&
+
+##ps aux|grep gost|grep -v grep|cut -c 9-15|xargs kill -15
+##ps -ef |grep gost
+
+EOF
+
+bash <(/root/sup.sh)
+
 #####
 
 ps -ef | grep gost
