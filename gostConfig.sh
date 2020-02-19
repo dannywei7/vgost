@@ -206,7 +206,7 @@ peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:20&compress
 peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:1433&compression=true
 peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:3306&compression=true
 
-peer    https://$your_userid:$your_pass@localhost:1080?ip=$your_domain:443
+peer    https://$your_userid:$your_pass@localhost:1080?ip=$your_domain:8080
 
 EOF
 
