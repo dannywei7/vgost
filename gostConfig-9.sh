@@ -211,7 +211,7 @@ wget https://github.com/dannywei7/vgost/raw/master/gostClient-9.zip
 unzip gostClient-9.zip
 mv -f gostClient-9 /usr/local/bin/gostClient-9
 
-cat > /usr/local/bin/gostClient/peer1.txt  <<-EOF
+cat > /usr/local/bin/gostClient-9/peer1.txt  <<-EOF
 strategy        random
 max_fails       1
 fail_timeout    5s
