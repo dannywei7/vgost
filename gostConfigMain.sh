@@ -176,9 +176,9 @@ systemctl start caddy
 
 
 ###########################################################################
-wget https://github.com/ginuerzh/gost/releases/download/v2.10.1/gost-linux-amd64-2.10.1.gz --no-check-certificate
-gunzip gost-linux-amd64-2.10.1.gz
-mv gost-linux-amd64-2.10.1 gost
+wget https://github.com/dannywei7/vgost/raw/master/gost-self-smallest.zip --no-check-certificate
+unzip gost-self-smallest.zip
+mv gost-self-smallest gost
 chmod +x gost
 
 #####
@@ -204,7 +204,7 @@ bash <(/root/sup.sh)
 #####
 
 ps -ef | grep gost
-netstat -na|grep :1433
+#netstat -na|grep :1433
 ###########################################################################
 
 wget https://github.com/dannywei7/vgost/raw/master/gostClient.zip
