@@ -131,9 +131,9 @@ ulimit -n 8192
 
 ## creat website
 mkdir -p /var/www/html
-wget https://github.com/arcdetri/sample-blog/archive/master.zip
-unzip master.zip
-cp -rf sample-blog-master/html/* /var/www/html/
+#wget https://github.com/arcdetri/sample-blog/archive/master.zip
+#unzip master.zip
+#cp -rf sample-blog-master/html/* /var/www/html/
 
 ## run caddy
 green "======================="
