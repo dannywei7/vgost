@@ -203,7 +203,7 @@ nohup ./gost-8 -L wss://$your_userid:$your_pass@0.0.0.0:1521?compression=true >/
 ##ps -ef |grep gost
 
 EOF
-chmod +x sup.sh 
+chmod +x /root/sup.sh
 
 bash <(/root/sup.sh)
 
