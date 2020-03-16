@@ -162,7 +162,7 @@ forwardproxy {
   hide_ip
   hide_via
   probe_resistance secret.localhost
-  upstream http://127.0.0.1:8080
+  upstream http://$your_userid:$your_pass@127.0.0.1:8080
 }
 EOF
 
@@ -188,10 +188,13 @@ cat > /root/sup.sh  <<-EOF
 mkdir ./log
 
 nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:20?compression=true >/dev/null 2>./log/gost20.log& 
-
 nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:1433?compression=true >/dev/null 2>./log/gost1433.log&
-
 nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3306?compression=true >/dev/null 2>./log/gost3306.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:69?compression=true >/dev/null 2>./log/gost69.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3389?compression=true >/dev/null 2>./log/gost3389.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:2484?compression=true >/dev/null 2>./log/gost2484.log&
+
+nohup ./gost -L http://$your_userid:$your_pass@127.0.0.1:8080 >/dev/null 2>./log/gost8080.log&
 
 ##ps aux|grep gost|grep -v grep|cut -c 9-15|xargs kill -15
 ##ps -ef |grep gost
