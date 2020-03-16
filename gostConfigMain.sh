@@ -226,6 +226,9 @@ reload          10s
 peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:20&compression=true
 peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:1433&compression=true
 peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:3306&compression=true
+peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:69&compression=true
+peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:3389&compression=true
+peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:2484&compression=true
 
 #peer    https://$your_userid:$your_pass@localhost:1080?ip=$your_domain:8080
 
