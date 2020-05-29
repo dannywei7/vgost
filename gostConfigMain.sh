@@ -176,9 +176,9 @@ systemctl start caddy
 
 
 ###########################################################################
-wget https://github.com/dannywei7/vgost/raw/master/gost-fullua-8-small-linux.zip --no-check-certificate
-unzip gost-fullua-8-small-linux.zip
-mv gost-fullua-8-small-linux gost
+wget https://github.com/dannywei7/vgost/raw/master/g529-linux.zip --no-check-certificate
+unzip g529-linux.zip
+mv g529-linux gost
 chmod +x gost
 
 #####
@@ -187,14 +187,14 @@ cat > /root/sup.sh  <<-EOF
 #!/bin/bash
 mkdir ./log
 
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:20?compression=true >/dev/null 2>./log/gost20.log& 
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:1433?compression=true >/dev/null 2>./log/gost1433.log&
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3306?compression=true >/dev/null 2>./log/gost3306.log&
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:69?compression=true >/dev/null 2>./log/gost69.log&
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3389?compression=true >/dev/null 2>./log/gost3389.log&
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:2484?compression=true >/dev/null 2>./log/gost2484.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:20?compression=true >/dev/null 2>./log/g20.log& 
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:1433?compression=true >/dev/null 2>./log/g1433.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3306?compression=true >/dev/null 2>./log/g3306.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:69?compression=true >/dev/null 2>./log/g69.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3389?compression=true >/dev/null 2>./log/g3389.log&
+nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:2484?compression=true >/dev/null 2>./log/g2484.log&
 
-nohup ./gost -L http://$your_userid:$your_pass@127.0.0.1:8080 >/dev/null 2>./log/gost8080.log&
+nohup ./gost -L http://$your_userid:$your_pass@127.0.0.1:8080 >/dev/null 2>./log/g8080.log&
 
 ##ps aux|grep gost|grep -v grep|cut -c 9-15|xargs kill -15
 ##ps -ef |grep gost
@@ -210,9 +210,9 @@ ps -ef | grep gost
 #netstat -na|grep :1433
 ###########################################################################
 
-wget https://github.com/dannywei7/vgost/raw/master/gostClient.zip
-unzip gostClient.zip
-mv -f gostClient /usr/local/bin/gostClient
+wget https://github.com/dannywei7/vgost/raw/master/g529-win.zip
+unzip g529-win.zip
+mv -f g529-win /usr/local/bin/g529-win
 
 cat > /usr/local/bin/gostClient/peer1.txt  <<-EOF
 strategy        random
