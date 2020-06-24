@@ -176,9 +176,9 @@ systemctl start caddy
 
 
 ###########################################################################
-wget https://github.com/dannywei7/vgost/raw/master/g529-linux.zip --no-check-certificate
-unzip g529-linux.zip
-mv g529-linux gost
+wget https://github.com/dannywei7/vgost/raw/master/g611-linux.zip --no-check-certificate
+unzip g611-linux.zip
+mv g611-linux gost
 chmod +x gost
 
 #####
@@ -210,9 +210,9 @@ ps -ef | grep gost
 #netstat -na|grep :1433
 ###########################################################################
 
-wget https://github.com/dannywei7/vgost/raw/master/g529-win.zip
-unzip g529-win.zip
-mv -f g529-win /usr/local/bin/g529-win
+wget https://github.com/dannywei7/vgost/raw/master/g611-win.zip
+unzip g611-win.zip
+mv -f g611-win /usr/local/bin/g529-win
 
 cat > /usr/local/bin/gostClient/peer1.txt  <<-EOF
 strategy        random
