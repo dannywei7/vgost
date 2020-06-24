@@ -195,6 +195,12 @@ nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3389?compression=true >/de
 nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:2484?compression=true >/dev/null 2>./log/g2484.log&
 
 nohup ./gost -L http://$your_userid:$your_pass@127.0.0.1:8080 >/dev/null 2>./log/g8080.log&
+nohup ./gost -L kcp://$your_userid:$your_pass@:8801 >/dev/null 2>./log/g8801.log& 
+nohup ./gost -L kcp://$your_userid:$your_pass@:8802 >/dev/null 2>./log/g8802.log& 
+nohup ./gost -L kcp://$your_userid:$your_pass@:8803 >/dev/null 2>./log/g8803.log& 
+nohup ./gost -L kcp://$your_userid:$your_pass@:8804 >/dev/null 2>./log/g8804.log& 
+nohup ./gost -L kcp://$your_userid:$your_pass@:8805 >/dev/null 2>./log/g8805.log& 
+
 
 ##ps aux|grep gost|grep -v grep|cut -c 9-15|xargs kill -15
 ##ps -ef |grep gost
