@@ -218,7 +218,7 @@ ps -ef | grep gost
 
 wget https://github.com/dannywei7/vgost/raw/master/g611-win.zip
 unzip g611-win.zip
-mv -f g611-win /usr/local/bin/gostClient
+mv -f g611-win.exe /usr/local/bin/gostClient
 
 cat > /usr/local/bin/gostClient/peer1.txt  <<-EOF
 strategy        random
