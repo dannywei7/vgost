@@ -9,11 +9,11 @@ nohup ./g806 -L tls://$uid:$key@:8807 >/dev/null 2>./log/g8807.log&
 nohup ./g806 -L tls://$uid:$key@:8808 >/dev/null 2>./log/g8808.log&
 nohup ./g806 -L tls://$uid:$key@:8809 >/dev/null 2>./log/g8809.log&
 nohup ./g806 -L tls://$uid:$key@:8810 >/dev/null 2>./log/g8810.log&
-nohup ./g806 -L kcp://$uid:$key@:8811 >/dev/null 2>./log/g8811.log&
-nohup ./g806 -L kcp://$uid:$key@:8812 >/dev/null 2>./log/g8812.log&
-nohup ./g806 -L kcp://$uid:$key@:8813 >/dev/null 2>./log/g8813.log&
-nohup ./g806 -L kcp://$uid:$key@:8814 >/dev/null 2>./log/g8814.log&
-nohup ./g806 -L kcp://$uid:$key@:8815 >/dev/null 2>./log/g8815.log&
+nohup ./g806 -L http2://$uid:$key@:8811 >/dev/null 2>./log/g8811.log&
+nohup ./g806 -L http2://$uid:$key@:8812 >/dev/null 2>./log/g8812.log&
+nohup ./g806 -L http2://$uid:$key@:8813 >/dev/null 2>./log/g8813.log&
+nohup ./g806 -L http2://$uid:$key@:8814 >/dev/null 2>./log/g8814.log&
+nohup ./g806 -L http2://$uid:$key@:8815 >/dev/null 2>./log/g8815.log&
 nohup ./g806 -L wss://$uid:$key@:8816 >/dev/null 2>./log/g8816.log&
 nohup ./g806 -L wss://$uid:$key@:8817 >/dev/null 2>./log/g8817.log&
 nohup ./g806 -L wss://$uid:$key@:8818 >/dev/null 2>./log/g8818.log&
