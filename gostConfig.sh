@@ -149,26 +149,55 @@ green "======================="
 read your_email
 
 
-curl https://getcaddy.com | bash -s personal hook.service,http.forwardproxy
+wget https://github.com/caddyserver/caddy/releases/download/v2.2.0/caddy_2.2.0_linux_amd64.tar.gz
+tar -xzf caddy_2.2.0_linux_amd64.tar.gz
+chmod +x caddy
+cp caddy /usr/bin/caddy
 
-
-
-cat >  /usr/local/bin/Caddyfile <<-EOF
+cat >  /etc/caddy/Caddyfile <<-EOF
 $your_domain
-root /var/www/html
-tls $your_email
-forwardproxy {
-  basicauth $your_userid $your_pass
-  hide_ip
-  hide_via
-  probe_resistance secret.localhost
-  upstream http://127.0.0.1:8080
-}
+root * /var/www/html
+file_server
 EOF
 
-caddy -service install -conf=/usr/local/bin/Caddyfile -agree=true
+cat > /etc/systemd/system/caddy.service <<-EOF
+# caddy.service
+#
+# For using Caddy with a config file.
+#
+# Make sure the ExecStart and ExecReload commands are correct
+# for your installation.
+#
+# See https://caddyserver.com/docs/install for instructions.
+#
+# WARNING: This service does not use the --resume flag, so if you
+# use the API to make changes, they will be overwritten by the
+# Caddyfile next time the service is restarted. If you intend to
+# use Caddy's API to configure it, add the --resume flag to the
+# `caddy run` command or use the caddy-api.service file instead.
 
-sudo setcap cap_net_bind_service=+ep /usr/local/bin/caddy
+[Unit]
+Description=Caddy
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+User=caddy
+Group=caddy
+ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
 
 systemctl enable caddy
 systemctl start caddy
@@ -176,61 +205,12 @@ systemctl start caddy
 
 
 ###########################################################################
-wget https://github.com/ginuerzh/gost/releases/download/v2.10.1/gost-linux-amd64-2.10.1.gz --no-check-certificate
-gunzip gost-linux-amd64-2.10.1.gz
-mv gost-linux-amd64-2.10.1 gost
+wget https://github.com/ginuerzh/gost/releases/download/v2.11.1/gost-linux-amd64-2.11.1.gz --no-check-certificate
+gunzip gost-linux-amd64-2.11.1.gz
+mv gost-linux-amd64-2.11.1 gost
 chmod +x gost
-
 #####
 
-cat > /root/sup.sh  <<-EOF
-#!/bin/bash
-mkdir ./log
-
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:20?compression=true >/dev/null 2>./log/gost20.log& 
-
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:1433?compression=true >/dev/null 2>./log/gost1433.log&
-
-nohup ./gost -L wss://$your_userid:$your_pass@0.0.0.0:3306?compression=true >/dev/null 2>./log/gost3306.log&
-
-##ps aux|grep gost|grep -v grep|cut -c 9-15|xargs kill -15
-##ps -ef |grep gost
-
-EOF
-chmod +x /root/sup.sh
-bash <(/root/sup.sh)
-
-#####
-
-ps -ef | grep gost
-netstat -na|grep :1433
-###########################################################################
-
-wget https://github.com/dannywei7/vgost/raw/master/gostClient.zip
-unzip gostClient.zip
-mv -f gostClient /usr/local/bin/gostClient
-
-cat > /usr/local/bin/gostClient/peer1.txt  <<-EOF
-strategy        random
-max_fails       1
-fail_timeout    5s
-
-reload          10s
-
-# peers
-
-peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:20&compression=true
-peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:1433&compression=true
-peer    wss://$your_userid:$your_pass@localhost:1080?ip=$your_domain:3306&compression=true
-
-peer    https://$your_userid:$your_pass@localhost:1080?ip=$your_domain:8080
-
-EOF
-
-cd /usr/local/bin/gostClient
-zip -q -r gost-cli.zip /usr/local/bin/gostClient/
-mkdir -p /var/www/html/client
-mv -f /usr/local/bin/gostClient/gost-cli.zip /var/www/html/client/
 
 
 
