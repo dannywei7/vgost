@@ -120,12 +120,6 @@ if [ $real_addr == $local_addr ] ; then
 	green "=========================================="
 	sleep 1s
 
-## install caddy	
-#curl -OJ 'https://caddyserver.com/download/linux/amd64?plugins=http.forwardproxy&license=personal'
-#tar -xzf caddy_*.tar.gz
-#setcap cap_net_bind_service=+ep caddy
-####
-
 ## 解除caddy限制
 ulimit -n 8192
 
@@ -148,7 +142,7 @@ yellow "请输入email"
 green "======================="
 read your_email
 
-
+#### install Caddy
 wget https://github.com/caddyserver/caddy/releases/download/v2.2.0/caddy_2.2.0_linux_amd64.tar.gz
 tar -xzf caddy_2.2.0_linux_amd64.tar.gz
 chmod +x caddy
@@ -202,17 +196,12 @@ EOF
 systemctl enable caddy
 systemctl start caddy
 
-
-
 ###########################################################################
 wget https://github.com/ginuerzh/gost/releases/download/v2.11.1/gost-linux-amd64-2.11.1.gz --no-check-certificate
 gunzip gost-linux-amd64-2.11.1.gz
 mv gost-linux-amd64-2.11.1 gost
 chmod +x gost
 #####
-
-
-
 
 	green "======================================================================"
 	green "Gost已安装完成，请使用以下链接下载Gost客户端，此客户端已配置好所有参数"
@@ -221,23 +210,13 @@ chmod +x gost
 	green "2、将下载的压缩包解压，打开文件夹，打开start.bat即打开并运行Gost客户端"
 	green "3、打开stop.bat即关闭Gost客户端"
 	green "======================================================================"
-
-
-
-
 else
 	red "================================"
 	red "域名解析地址与本VPS IP地址不一致"
 	red "本次安装失败，请确保域名解析正常"
 	red "================================"
-
-
 fi
 }
-
-
-
-
 
 # remove
 function remove_gost(){
