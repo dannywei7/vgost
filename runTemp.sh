@@ -19,3 +19,6 @@ nohup ./g926 -L wss://$uid:$key@:8817 >/dev/null 2>./log/g8817.log&
 nohup ./g926 -L wss://$uid:$key@:8818 >/dev/null 2>./log/g8818.log&
 nohup ./g926 -L wss://$uid:$key@:8819 >/dev/null 2>./log/g8819.log&
 nohup ./g926 -L wss://$uid:$key@:8820 >/dev/null 2>./log/g8820.log&
+
+##ps aux|grep gost|grep -v grep|cut -c 9-15|xargs kill -15
+##ps -ef |grep gost
