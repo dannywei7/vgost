@@ -148,6 +148,7 @@ tar -xzf caddy_2.2.0_linux_amd64.tar.gz
 chmod +x caddy
 cp caddy /usr/bin/caddy
 
+mkdir /etc/caddy/
 cat >  /etc/caddy/Caddyfile <<-EOF
 $your_domain
 root * /var/www/html
