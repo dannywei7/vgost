@@ -151,6 +151,7 @@ cp caddy /usr/bin/caddy
 mkdir /etc/caddy/
 cat >  /etc/caddy/Caddyfile <<-EOF
 $your_domain
+
 root * /var/www/html
 file_server
 EOF
