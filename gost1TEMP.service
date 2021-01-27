@@ -1,0 +1,12 @@
+[Unit]
+Description=gost1
+Documentation=https://caddyserver.com/docs/
+After=network.target
+
+[Service]
+ExecStart=/root/gost1 -L kcp://$user:$pass@:8821 -L kcp://$user:$pass@:8822 -L http2://$user:$pass@:8823 -L mtls://$user:$pass@:8824 -L mwss://$user:$pass@:8825
+ExecReload=ps aux|grep gost1|grep -v grep|cut -c 9-15|xargs kill -15
+TimeoutStopSec=5s
+
+[Install]
+WantedBy=multi-user.target
