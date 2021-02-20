@@ -143,8 +143,8 @@ green "======================="
 read your_email
 
 #### install Caddy
-wget https://github.com/caddyserver/caddy/releases/download/v2.2.0/caddy_2.2.0_linux_amd64.tar.gz
-tar -xzf caddy_2.2.0_linux_amd64.tar.gz
+wget https://github.com/caddyserver/caddy/releases/download/v2.3.0/caddy_2.3.0_linux_amd64.tar.gz
+tar -xzf caddy_2.3.0_linux_amd64.tar.gz
 chmod +x caddy
 cp caddy /usr/bin/caddy
 
