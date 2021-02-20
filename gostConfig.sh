@@ -179,8 +179,6 @@ After=network.target network-online.target
 Requires=network-online.target
 
 [Service]
-User=caddy
-Group=caddy
 ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
 ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
 TimeoutStopSec=5s
