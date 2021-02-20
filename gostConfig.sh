@@ -113,7 +113,7 @@ yellow "请输入绑定到本VPS的域名"
 green "======================="
 read your_domain
 real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
-local_addr=`curl ipv4.icanhazip.com`
+local_addr=`curl -4 icanhazip.com`
 if [ $real_addr == $local_addr ] ; then
 	green "=========================================="
 	green "       域名解析正常，开始安装naive"
